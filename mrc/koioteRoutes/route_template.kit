@@ -1,0 +1,14 @@
+import { Router } from "express";
+
+import { create{{name_capitalized}}, delete{{name_capitalized}}, get{{name_capitalized}},get{{name_capitalized}}s, update{{name_capitalized}} } from "../controllers/{{name}}.controller.js";
+
+
+const router = Router()
+
+router.get('/{{name}}/:id',get{{name_capitalized}})
+router.get('/{{name}}s',get{{name_capitalized}}s)
+router.post('/{{name}}',create{{name_capitalized}})
+router.put('/{{name}}/:id',update{{name_capitalized}})
+router.delete('/{{name}}/:id',delete{{name_capitalized}})
+
+export default router

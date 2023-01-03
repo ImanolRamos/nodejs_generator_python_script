@@ -1,0 +1,81 @@
+import { {{name_capitalized}} } from '../models/{{name_capitalized}}.js';
+// SELECT ALL
+export const get{{name_capitalized}}s = async (req,res)=>{
+   try {
+     const {{name}}s = await {{name_capitalized}}.findAll();
+     
+     res.json({{name}}s)
+   } catch (error) {
+        return res.status(500).json({message:error.message})
+   }
+}
+
+export const get{{name_capitalized}} = async (req,res)=>{
+    try {
+        const {id} = req.params;
+        const {{name}} = await {{name_capitalized}}.findOne({
+            where:{
+                id
+            }
+        });
+        
+        res.json({{name}})
+    } catch (error) {
+         return res.status(500).json({message:error.message})
+    }
+ }
+
+// INSERT
+export const  create{{name_capitalized}} = async (req,res)=>{
+   try {
+     const {
+        {{fields}}
+    } = req.body;
+ 
+     console.log(req.body)
+ 
+     const new{{name_capitalized}} = await {{name_capitalized}}.create({
+        {{fields}}
+     })
+     res.json(new{{name_capitalized}})
+   } catch (error) {
+    return res.status(500).json({message:error.message})
+
+   }
+};
+
+
+// UPDATE
+export const update{{name_capitalized}} = async (req,res)=>{
+    try {
+        const {id} = req.params;
+        
+
+        const {{name}} = await {{name_capitalized}}.findByPk(id)
+        {{name}}.set(req.body);
+       
+        await {{name}}.save()
+
+        console.log({{name}})
+        res.json({{name}})
+    } catch (error) {
+     return res.status(500).json({message:error.message})
+ 
+    }
+};
+
+// DELETE
+export const delete{{name_capitalized}} = async (req,res)=>{
+    try {
+        const {id} = req.params;
+        await {{name_capitalized}}.destroy({
+            where:{
+                id
+            }
+        })
+      res.sendStatus(204)
+    } catch (error) {
+     return res.status(500).json({message:error.message})
+ 
+    }
+};

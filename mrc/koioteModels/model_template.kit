@@ -1,0 +1,10 @@
+import { DataTypes} from 'sequelize'
+import { sequelize } from "../util/database.js";
+
+export const {{name_capitalized}} = sequelize.define('{{name}}',{
+    id:{
+        type: DataTypes.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
+    },
+});
