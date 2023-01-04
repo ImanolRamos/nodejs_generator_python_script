@@ -1,3 +1,4 @@
+import os
 from koioteUtils import KoioteUtils
 
 class KoioteModel():
@@ -8,7 +9,7 @@ class KoioteModel():
         }
         print("Modelo {} creado!".format(name))
         self.util = KoioteUtils()
-        model_lines = self.util.getLines('koioteModels/model_template.kit')
+        model_lines = self.util.getLines(os.getcwd()+'/mrc/koioteModels/model_template.kit')
        
         model_lines = list(self.util.replaceNames(model_lines,name))
         
@@ -23,6 +24,12 @@ class KoioteModel():
         #     print(idx,line)
         
         self.util.writeLines("results/models/{}.js".format(name.capitalize()),model_lines)
+    
+    def move_to_backend(self):
+        src = "results/models/{}.js".format(self.model['name'].capitalize())
+        dst = os.getcwd()+"/backend/models/{}.js".format(self.model['name'].capitalize())
+        self.util.copy_file(src,dst)
+            
 
 
   

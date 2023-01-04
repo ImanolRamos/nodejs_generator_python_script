@@ -2,9 +2,6 @@ from koioteModels import KoioteModel
 from koioteControllers import KoioteController
 from koioteRoutes import KoioteRoute
 from backend import BackendGenerator
-
-
-
 #Create backend
 mBackendGenerator = BackendGenerator()
 # mBackendGenerator.create_nodejs()
@@ -21,22 +18,24 @@ mBackendGenerator.create_server()
 
 
 
-# end=False
-# while end==False:
-#     print("Nombre del modelo:")
-#     name= input()
-#     if name=='0':
-#         end=True
-#         break
-#     #Create model
-#     mKoioteModel = KoioteModel(name)
+end=False
+while end==False:
+    print("Nombre del modelo:")
+    name= input()
+    if name=='0':
+        end=True
+        break
+    #Create model
+    mKoioteModel = KoioteModel(name)
+    mKoioteModel.move_to_backend()
+    
 
-#     #Create controller
-#     mKoioteController = KoioteController(mKoioteModel.model)
-#     mKoioteController.getAndUpdateFieldString()
+    #Create controller
+    mKoioteController = KoioteController(mKoioteModel.model)
+    mKoioteController.getAndUpdateFieldString()
 
-#     #Create route
-#     mKoioteRoute = KoioteRoute(mKoioteModel.model)
+    #Create route
+    mKoioteRoute = KoioteRoute(mKoioteModel.model)
 
 
 
